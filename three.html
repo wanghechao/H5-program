@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/three.css">
+</head>
+<body>
+    <div class="bigbox">
+        <div class="neiron">
+            <div class="tu"></div>
+            <div class="tu">阿巴阿巴阿巴阿巴阿巴阿巴阿<br>巴阿巴阿巴阿巴阿巴阿巴</div>
+            <div class="tu"></div>
+            <div class="tu">阿巴阿巴阿巴阿巴阿巴阿巴<br>阿巴阿巴阿巴阿巴阿巴阿巴</div>
+            <div class="btn_start"></div>
+            
+        </div>
+        
+        <div class="zuohua"></div>
+    </div>
+</body>
+
+<script>
+    function $(name) {
+        return document.querySelector(name);
+    }
+
+    $(".btn_start").onclick = function() {
+        location.replace("four.html")
+    }
+
+
+    let juli = 0;
+
+    $(".neiron").onmousedown = function(e) {
+        let X = e.offsetX;
+        e.preventDefault();
+        $(".zuohua").style.display = "none";
+            $(".neiron").onmousemove = function(e) {
+                    if(juli < 0) {
+                        $(".neiron").onmousemove = null;
+                        juli = 10;
+                        return ;
+                    }else if(juli > 900) {
+                        $(".neiron").onmousemove = null;
+                        juli = 900;
+                        return ;
+                    } else {
+                        let moveX = e.offsetX;
+                        juli += X - moveX;
+                        $(".neiron").style.left = -juli + "px";
+                        if(juli >= 60) {
+                            $(".neiron").children[1].style.animation = "bianda_anima 3s linear forwards"
+                        }
+                        if(juli >= 320) {
+                            $(".neiron").children[2].style.animation = "bianda_anima 3s linear forwards"
+                        }
+                        if(juli >= 620) {
+                            $(".neiron").children[3].style.animation = "bianda_anima 3s linear forwards"
+                        }
+
+                    }
+
+            }
+        $(".neiron").onmouseup = function() {
+            $(".neiron").onmousemove = null;
+            $(".zuohua").style.display = "block";
+        }
+        $(".neiron").onmouseout = function() {
+            $(".neiron").onmousemove = null;
+            $(".zuohua").style.display = "block";
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/eight.css">
+</head>
+<body>
+    <div class="bigbox">
+        <div class="neiron">
+            <div class="niansho"></div>
+        </div>
+
+        <div class="neiron2">
+            <div class="zhedan"></div>
+            <div class="all_btn">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function $(name) {
+        return document.querySelector(name);
+    }
+
+    setTimeout(function() {
+        $(".neiron2").style.animation = "neiron2 3s linear forwards";
+        setTimeout(function() {
+            $(".zhedan").style.animation = "neiron2 3s linear forwards";
+            chuxian();
+        } , 1500)
+    } , 4000)
+
+    function chuxian() {
+        
+        for(let i = 0 ; i <=  $(".all_btn").children.length - 1 ; i++) {
+            $(".all_btn").children[i].style.animation = `fanda 1s ${i}s linear forwards`;
+
+            $(".all_btn").children[i].onclick = function() {
+                sessionStorage.setItem("wuping" , i);
+                location.replace("eight-2.html");
+            }
+        }
+    }
+</script>
+</html>

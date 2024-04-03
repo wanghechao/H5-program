@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.bigbox {
+    width: 450px;
+    height: 700px;
+    position: relative;
+    overflow: hidden;
+}
+
+.neiron {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url(../img/neiron4/背景.png) 100%/100% no-repeat;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.guizhe {
+    position: absolute;
+    width: 70%;
+    height: 60%;
+    background: url(../img/neiron4/红色规则背景.png) 100%/100% no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation:  toming 2s linear forwards;
+}
+
+.biaoti {
+    width: 50%;
+    height: 10%;
+    background: url(../img/neiron4/连连看标题.png) 100%/100% no-repeat;
+    transform: scale(0);
+    animation: fanda 2s linear forwards;
+}
+
+.guizhe_neiron {
+    margin-top: 50px;
+    width: 65%;
+    color: white;
+    line-height: 25px;
+    animation: dzj 10s steps(20) forwards;
+    overflow: hidden;
+    position: relative;
+}
+
+.guizhe_neiron::after {
+    content: '';
+    position: absolute;
+    right: 10%;
+    height: 16px;
+    border-right: 1px solid black;
+    animation: toming 2s alternate linear infinite;
+}
+
+.btn {
+    cursor: pointer;
+    width: 60%;
+    height: 10%;
+    background: url(../img/neiron4/开始收集按钮.png) 100%/100% no-repeat;
+    opacity: 0;
+    animation: toming 3s 2s linear forwards ;
+}
+
+@keyframes toming {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes fanda {
+    100%{
+        transform: scale(1);
+    }
+}
+
+@keyframes text_tiaodon {
+    0%{
+        transform: translate(0);
+    }
+    100%{
+        transform: translate(0 , -20px);
+    }
+}
+
+@keyframes dzj {
+    0%{
+        height: 0;
+    }
+    100%{
+        height: 50%;
+    }
+}

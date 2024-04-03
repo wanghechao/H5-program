@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/six-2.css">
+</head>
+<body>
+    <div class="bigbox">
+        <div class="neiron">
+            <div class="hb" index = "1"></div>
+            <div class="hb" index = "1"></div>
+            <div class="hb" index = "2"></div>
+            <div class="hb" index = "2"></div>
+            <div class="hb" index = "3"></div>
+            <div class="hb" index = "3"></div>
+        </div>
+            <div class="gubanzi"></div>
+            <div class="gubanzi2"></div>
+                <div class="gu">
+                    <div class="djs"><b>20</b></div>
+                </div>
+
+                
+            <div class="cg">
+                <div class="cg_btn">
+                    <div class="btn" onclick="location.replace('seven.html')"></div>
+                </div>
+                <div class="yanhua"></div>
+            </div>
+
+            <div class="shibai">
+                <div class="rebtn" onclick="location.reload()"></div>
+                <div class="liuhan"></div>
+            </div>
+    </div>
+</body>
+
+
+<script>
+    
+    function $(name) {
+        return document.querySelector(name);
+    }
+    
+    let time_val = 20;
+    let next_web = 0;
+
+    timer = setInterval(function() {
+        time_val--;
+        $(".djs").innerHTML = time_val;
+
+
+        if(next_web == 3) {
+            $(".cg").style.display = "block";
+            clearInterval(timer);
+        }
+        
+        if(time_val <= 6) {
+            $(".gubanzi").style.animation = "banzi 1s alternate linear infinite";
+            $(".gubanzi2").style.animation = "banzi2 1s alternate linear infinite";
+        }
+        if(time_val <= 0) {
+            $(".shibai").style.display = "block";
+            clearInterval(timer);
+        }
+    } , 1000)
+
+
+    function game() {
+        let isclick = false;
+        let isok1;
+        let isok2;
+
+        for(let i = 0 ; i <= $(".neiron").children.length - 1; i++) {
+
+            $(".neiron").children[i].onclick = function() {
+
+                if($(".neiron").children[i].classList.contains("clicked")) {
+                    return ;
+                }
+
+                if(isclick == false) {
+                    this.classList.add("clicked");
+                    isok1 = this.getAttribute("index");
+                    isclick = true;
+                }else {
+                    isok2 = this.getAttribute("index");
+                    this.classList.add("clicked2");
+                    
+
+                    if( isok1 == isok2) {
+                        $(".clicked").style.display = "none";
+                        $(".clicked2").style.display = "none";
+                        next_web++;
+                    }else {
+                        console.log("notok")
+                    }
+                    
+                    for(let i = 0 ; i <= $(".neiron").children.length - 1; i++) {
+                        $(".neiron").children[i].classList.remove("clicked");
+                        $(".neiron").children[i].classList.remove("clicked2");
+                    }
+                   
+                   
+                    isclick = false;
+                }
+
+                
+
+            }
+        }
+
+
+        
+    }
+    game();
+</script>
+</html>

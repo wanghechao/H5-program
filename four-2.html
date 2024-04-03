@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/four-2.css">
+</head>
+<body>
+    <div class="bigbox">
+        <div class="neiron">
+            <div class="paozhu"></div>
+            <div class="paozhu"></div>
+            <div class="huoba"></div>
+        </div>
+            <div class="text"></div>
+            <div class="gubanzi"></div>
+            <div class="gubanzi2"></div>
+                <div class="gu">
+                    <div class="djs"><b>20</b></div>
+                </div>
+            <div class="shibai">
+                <div class="rebtn" onclick="location.reload()"></div>
+                <div class="liuhan"></div>
+            </div>
+    </div>
+</body>
+
+<script>
+    function $(name) {
+        return document.querySelector(name);
+    }
+
+    let left = 0;
+    $(".neiron").onmousedown = function(e) {
+        let x = e.offsetX;
+            $(".neiron").onmousemove = function(e) {
+                let movex = e.offsetX;
+                left += x - movex;
+                $(".neiron").style.left = -left + "px";
+
+                if(left < 0 || left > 450) {
+                    $(".neiron").onmousemove = null;
+                    return ;
+                }
+                $(".text").style.display = "none";
+            }
+
+        $(".neiron").onmouseup = function() {
+            $(".neiron").onmousemove = null;
+            $(".text").style.display = "block";
+        }
+        $(".neiron").onmouseout = function() {
+            $(".neiron").onmousemove = null;
+            $(".text").style.display = "block";
+        }
+    }
+
+    let next_web = 0;
+    let paozhu = document.querySelectorAll(".paozhu");
+    paozhu[0].onclick = function() {
+        this.classList.add("zhaodao_paozhu");
+        next_web++;
+        this.onclick = null;
+    }
+
+    paozhu[1].onclick = function() {
+        paozhu[1].classList.add("zhaodao_paozhu");
+        next_web++;
+        this.onclick = null;
+    }
+
+    $(".huoba").onclick = function() {
+        this.style.background = "url(img/neiron3/找到火把.png) 100%/100% no-repeat";
+        this.style.width = 60 + "px";
+        this.style.height = 90 + "px";
+        next_web++;
+        this.onclick = null;
+    }
+
+
+    let time_val = 20;
+    timer = setInterval(function() {
+        time_val--;
+        $(".djs").innerHTML = time_val;
+        console.log(next_web)
+        if(next_web === 3) {
+            location.replace("five.html")
+        }
+
+        if(time_val <= 6) {
+            $(".gubanzi").style.animation = "banzi 1s alternate linear infinite";
+            $(".gubanzi2").style.animation = "banzi2 1s alternate linear infinite";
+        }
+        if(time_val <= 0) {
+            $(".shibai").style.display = "block";
+            clearInterval(timer);
+        }
+    } , 1000)
+</script>
+</html>

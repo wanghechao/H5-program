@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.bigbox {
+    width: 450px;
+    height: 700px;
+    position: relative;
+    overflow: hidden;
+}
+
+.neiron {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../img/neiron6/背景3.png) 100%/100% no-repeat;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.guanhuan {
+    position: absolute;
+    height: 200%;
+    width: 200%;
+    background: url(../img/neiron6/光环.png) 100%/100% no-repeat;
+    animation: gh 5s linear infinite;
+}
+
+@keyframes gh {
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.kk {
+    width: 100%;
+    height: 60%;
+    background: url(../img/neiron6/框框.png) 100%/100% no-repeat;
+    z-index: 2;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kk :nth-child(1) {
+    position: absolute;
+    top: 45%;
+    left: 15%;
+    width: 10%;
+    height: 12%;
+    background: url(../img/neiron6/按钮.png) 100%/100% no-repeat;
+    transform: rotateY(180deg);
+    cursor: pointer;
+}
+
+.kk :nth-child(2) {
+    position: absolute;
+    top: 45%;
+    right: 15%;
+    width: 10%;
+    height: 12%;
+    background: url(../img/neiron6/按钮.png) 100%/100% no-repeat;
+    cursor: pointer;
+}
+
+.tupian {
+    position: absolute;
+    width: 50%;
+    height: 60%;
+    top: 20%;
+}
+
+.re_game {
+    position: absolute;
+    bottom: 10%;
+    width: 30%;
+    height: 15%;
+    background: url(../img/neiron6/重新游戏.png) 100%/100% no-repeat;
+    cursor: pointer;
+    animation: btn 3s alternate infinite;
+}
+
+@keyframes btn {
+    0%{
+        transform: translate(0 , -20px);
+    }
+    100%{
+        transform: translate(0);
+    }
+}

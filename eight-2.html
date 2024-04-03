@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/eight-2.css">
+</head>
+<body>
+    <div class="bigbox">
+        <div class="neiron">
+            <div class="guanhuan"></div>
+            <div class="kk">
+                <div></div>
+                <div></div>
+                <div class="tupian"></div>
+                <div class="re_game" onclick="location.replace('two.html')"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function $(name) {
+        return document.querySelector(name);
+    }
+
+    let tupian = ["url(img/neiron6/饺子红包.png) 100%/100% no-repeat" , "url(img/neiron6/鸡红包.png) 100%/100% no-repeat" , "url(img/neiron6/鱼红包.png) 100%/100% no-repeat" , "url(img/neiron6/腐竹红包.png) 100%/100% no-repeat"];
+    let danqian = sessionStorage.getItem("wuping");
+    $(".tupian").style.background = tupian[danqian];
+
+    $(".kk").children[0].onclick = function() {
+        
+        if(danqian == 0) {
+            return ;
+        }else {
+            danqian--;
+            $(".tupian").style.background = tupian[danqian];
+        }
+    }
+
+    $(".kk").children[1].onclick = function() {
+        
+        if(danqian == 3) {
+            return ;
+        }else {
+            danqian++;
+            $(".tupian").style.background = tupian[danqian];
+        }
+    }
+</script>
+</html>

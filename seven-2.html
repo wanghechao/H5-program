@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/seven-2.css">
+</head>
+<body>
+    <div class="bigbox">
+        <div class="neiron">
+            <div class="zhi">
+                
+                <canvas class="huabu"></canvas>
+                <div class="two_btn">
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+    <script>
+        // 这里是画布的初始化操作
+        let huabu = document.querySelector(".huabu");
+        let hb = huabu.getContext("2d");
+        // 给画笔加颜色
+        hb.fillStyle = "black";
+
+        // 在画布上一点击就做功能
+        huabu.onmousedown = function(e) {
+            // 获取鼠标在画布上距离画布左边跟头部距离
+            let left = e.offsetX;
+            let top = e.offsetY/2.8;
+            // 给一开始点击的位置加上颜色fillRect的意思是填充正方形,下面left和top是鼠标所点下去的位置,10是正方形的宽，5是正方形的高
+            hb.fillRect(left , top , 10 , 5 )
+            // 移动画画
+            huabu.onmousemove = function(e) {
+                let left = e.offsetX;
+                let top = e.offsetY/2.8;
+                hb.fillRect(left , top , 10 , 5 );
+            }
+            // 鼠标松开就让移动画画功能去除
+            huabu.onmouseup = function() {
+                huabu.onmousemove = null;
+            }
+        }
+
+        let two_btn = document.querySelector(".two_btn")
+        // 清除画布按钮功能
+        two_btn.children[0].onclick = function() {
+            hb.clearRect(0 , 0 , 300 , 400 )
+        }
+        
+        
+        // 通过本地缓存将画布传过去下一个页面
+        two_btn.children[1].onclick = function() {
+
+            let img_src = huabu.toDataURL("imges/png");
+            
+            sessionStorage.setItem("img_src", img_src )
+
+            location.replace("seven-3.html");
+        }
+    </script>
+</html>

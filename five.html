@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/five.css">
+</head>
+<body>
+    <div class="bigbox">
+        <div class="neiron"></div>
+        <div class="niansho"></div>
+            <div class="paozhu"></div>
+            <div class="paozhu2"></div>
+            <div class="huoba"></div>
+            <div class="two_eye">
+                <div></div>
+                <div></div>
+            </div>
+
+            <div class="baozha_paozhu">
+                <div></div>
+                <div></div>
+            </div>
+
+            <div class="cg">
+                <div class="cg_btn">
+                    <div class="btn"></div>
+                </div>
+                <div class="yanhua"></div>
+            </div>
+    </div>
+</body>
+
+    <script>
+        function $(name) {
+            return document.querySelector(name);
+        }
+
+        $(".btn").onclick = function() {
+            location.replace("six.html")
+        }
+
+        // 控制火把移动功能
+        let juli = 0;
+        let top_juli = 0;
+        let next_web = 0;
+        $(".huoba").onmousedown = function(e) {
+            let x = e.offsetX;
+            let y = e.offsetY;
+            $(".huoba").onmousemove = function(e) {
+                let movex = e.offsetX;
+                let movey = e.offsetY;
+                juli += x - movex;
+                top_juli += y - movey;
+                $(".huoba").style.left = -juli + "px";
+                $(".huoba").style.top = -top_juli + "px";
+                penzhuan($(".huoba") , $(".paozhu2"))
+                penzhuan($(".huoba") , $(".paozhu"))
+
+            }
+            $(".huoba").onmouseup = function(e) {
+                $(".huoba").onmousemove = null;
+            }
+            $(".huoba").onmouseout = function(e) {
+                $(".huoba").onmousemove = null;
+            }
+        }
+
+        // 碰撞检测封装
+        function penzhuan(huoba , paozhu) {
+            let l = huoba.offsetLeft;
+            let t = huoba.offsetTop;
+            let r = huoba.offsetWidth + l;
+            let b = huoba.offsetHeight + t;
+
+            let l2 = paozhu.offsetLeft;
+            let t2 = paozhu.offsetTop;
+            let r2 = paozhu.offsetWidth + l2;
+            let b2 = paozhu.offsetHeight + t2;
+
+            if(l > r2 || t > b2 || r < l2 || b < t2) {
+                return ;
+            }else {
+                next_web++;
+                paozhu.style.display = "none";
+                $(".two_eye").style.display = "flex";
+
+                $(".baozha_paozhu").style.display = "block";
+                setTimeout(() => {
+                    $(".baozha_paozhu").style.display = "none";
+                    if(next_web == 2) {
+                        $(".cg").style.display = "block";
+                    }
+                }, 3000);
+            }
+        }
+    </script>
+</html>

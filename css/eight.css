@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.bigbox {
+    width: 450px;
+    height: 700px;
+    position: relative;
+    overflow: hidden;
+}
+
+.neiron {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../img/neiron6/背景.png) 100%/100% no-repeat;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.niansho {
+    width: 60%;
+    height: 60%;
+    background: url(../img/neiron6/大年兽.png) 100%/100% no-repeat;
+    animation: niansho 4s linear forwards;
+}
+
+@keyframes niansho {
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(0);
+    }
+}
+
+.neiron2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../img/neiron6/背景2.png) 100%/100% no-repeat;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+
+@keyframes neiron2 {
+    0%{
+
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.zhedan {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../img/neiron6/遮挡层.png) 100%/100% no-repeat;
+    opacity: 0;
+}
+
+.all_btn {
+    transform: translate( 0 , 50px);
+    width: 60%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.all_btn :nth-child(1) {
+    width: 90%;
+    height: 30%;
+    background: url(../img/neiron6/饺子.png) 100%/100% no-repeat;
+    transform: scale(0);
+}
+
+.all_btn :nth-child(2) {
+    width: 90%;
+    height: 30%;
+    background: url(../img/neiron6/鸡.png) 100%/100% no-repeat;
+    transform: scale(0);
+}
+
+.all_btn :nth-child(3) {
+    width: 90%;
+    height: 30%;
+    background: url(../img/neiron6/鱼.png) 100%/100% no-repeat;
+    transform: scale(0);
+}
+
+.all_btn :nth-child(4) {
+    width: 90%;
+    height: 30%;
+    background: url(../img/neiron6/腐竹.png) 100%/100% no-repeat;
+    transform: scale(0);
+}
+
+@keyframes fanda {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}

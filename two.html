@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/two.css">
+</head>
+<body>
+    <div class="bigbox">
+        <div class="neiron">
+            <div class="xiaoshi"></div>
+
+            <div class="chuxian">
+                <div class="niansho"></div>
+                <div class="btn_start">
+                    <div class="paozhu"></div>
+                    <div class="paozhu"></div>
+                </div>
+                <div class="yanwu"></div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+<script>
+
+        function $(name) {      
+            return document.querySelector(name);
+        }
+
+        $(".btn_start").onclick = function() {
+            location.replace("three.html")
+        }
+
+    setTimeout(function() {
+       $(".chuxian").style.display = "flex";
+       setTimeout(function() {
+        $(".btn_start").style.animation = "btn_anima 3s linear alternate infinite"
+       } , 3000)
+        
+    } , 3000)
+</script>
+</html>
